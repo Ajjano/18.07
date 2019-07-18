@@ -33,11 +33,76 @@
     //3
     let arrEmail=['mymail@mail.ru',
         'my.mail@mail.ru', 'my-mail@mail.ru', 'my_mail@mail.ru', 'mail@mail.com', 'mail@mail.by', 'mail@yandex.ru'];
+    exp=/[^@^ ]+@[a-z]+\.[a-z]+/gm;
     for(let i=0;i<arrEmail.length;i++){
-        exp=/[^@]+@\D+\.\D+/gi;
+       console.log( exp.test(arrEmail[i]));
     }
 
+    //4
+    string='С помощью метода test определите, что переданная строка является емэйлом. Примеры емэйлов для тестирования mymail@mail.ru,\n' +
+        ' my.mail@mail.ru, my-mail@mail.ru, my_mail@mail.ru, mail@mail.com, mail@mail.by, mail@yandex.ru';
+    res=string.match(exp);
+    res.forEach((value)=>{
+        console.log(value);
+    });
 
+    //5
+    exp=/\w+\.\w{2,}/gmi;
+    string='my-site.com';
+    console.log(exp.test(string));
+
+    //6-7
+    exp=/https?:\/\/\w+\.\w{2,}/gmi;
+    console.log(exp.test('http://site.com'));
+
+    //8
+    exp=/^[https?]/gmi;
+    console.log(exp.test('https://site.com'));
+
+    //9
+    exp=/(txt|html|php)$/gmi;
+    console.log(exp.test('https://site.php'));
+
+    //11
+    exp=/[0-9]{0,12}/gmi;
+    console.log(exp.test('4565'));
+
+    //12
+    exp=/[0-9]+/gmi;
+    string='jjg8gh56jh45j77j8j6j5 lg2 4h 5h8';
+    res=string.match(exp);
+    let sum=0;
+    res.forEach((value)=>{
+        sum+=parseInt(value);
+    })
+    console.log(sum);
+
+    //13
+    string='С помощью replace замените в строке домены вида http://site.ru, http://site.com';
+    exp=/https?:\/\/\w+\.(ru|com)/gmi;
+    string=string.replace(exp, '<a href="http://site.ru">site.ru</a>');
+    console.log(string);
+
+    //14
+    exp=/\s+/gm;
+    string='С           помощью replace          замените в строке       домены вида http://site.ru,         http://site.com';
+    string=string.replace(exp, ' ');
+    console.log(string);
+
+    //15
+    exp=/[\/\*].*[\*\/]/gm;
+    string='<!-- Меню -->\n' +
+        '  <div>Меню</div>\n' +
+        '\n' +
+        '  /*Контент*/';
+
+    string=string.replace(exp,'');
+    console.log(string);
+
+    //16
+    exp=/<!--.*-->/;
+    string=string.replace(exp,'');
+    console.log(string);
 
 </script>
 </body>
