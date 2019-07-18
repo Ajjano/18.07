@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--1-->
+
+<script>
+    //1
+    let exp=/\w+@\w+/gi;
+    let string='aaa@bbb eee7@kkk';
+    let res=string.match(exp);
+    let one;
+    res.forEach((value,index,array)=>{
+        console.log(`${value}, ${index}`);
+        let tempExp=/\w+/gi;
+        one=value.match(tempExp);
+        console.log(one[1]+'@'+one[0]);
+
+    });
+
+    //2
+    exp=/\d/gi;
+    string='a1b2c3';
+    let temp=string.match(exp);
+    for(let i=0; i<temp.length;i++){
+        string=string.replace(temp[i], `${temp[i]}${temp[i]}`);
+    }
+    console.log(string);
+
+    //3
+    let arrEmail=['mymail@mail.ru',
+        'my.mail@mail.ru', 'my-mail@mail.ru', 'my_mail@mail.ru', 'mail@mail.com', 'mail@mail.by', 'mail@yandex.ru'];
+    for(let i=0;i<arrEmail.length;i++){
+        exp=/[^@]+@\D+\.\D+/gi;
+    }
+
+
+
+</script>
+</body>
+</html>
